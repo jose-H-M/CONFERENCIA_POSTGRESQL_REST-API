@@ -33,7 +33,7 @@ AS
 $$
 	BEGIN
 		RETURN QUERY
-			SELECT H.id_historial_precio,H.fecha_hora,H.aumento_disminucion,P.nombre AS producto
+			SELECT H.id_historial_precio,H.fecha_hora,H.cantidad,H.aumento_disminucion,P.nombre AS producto
 			FROM historial_precio H
 			JOIN PRODUCTO P ON PRODUCTO_id_producto=id_producto;
 	END;
