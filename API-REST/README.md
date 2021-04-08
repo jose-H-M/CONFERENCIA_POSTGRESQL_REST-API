@@ -1,3 +1,12 @@
+# Instalar Nodejs
+
+Intalar nodejs y manejador de paquetes:
+```sh
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get instal npm
+```
+
 # Configurando Node
 
 Iniciar package.json, para gestionar las dependencias del proyecto, versiones, entre otras configuraciones globales. Para crear el archivo se utiliza el siguiente comando:
