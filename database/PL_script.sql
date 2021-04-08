@@ -72,9 +72,6 @@ $$
 		RETURN NEW;
 END;$$
 
-DROP TRIGGER actualizacionPrecio
-ON PRODUCTO;
-
 CREATE TRIGGER actualizacionPrecio
 AFTER UPDATE
 ON PRODUCTO
