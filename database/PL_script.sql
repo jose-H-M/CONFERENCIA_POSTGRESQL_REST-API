@@ -9,7 +9,6 @@ RETURNS TABLE (
 				empleado VARCHAR,
 				producto VARCHAR
 			  )
-LANGUAGE plpgsql
 AS $$
 BEGIN
 	RETURN QUERY
@@ -20,6 +19,7 @@ BEGIN
 
 END;
 $$
+LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION getHistorial()
 RETURNS TABLE (
@@ -29,7 +29,6 @@ RETURNS TABLE (
 				aumento_disminucion BOOLEAN,
 				producto VARCHAR
 			  )
-LANGUAGE plpgsql
 AS 
 $$
 	BEGIN
@@ -39,11 +38,11 @@ $$
 			JOIN PRODUCTO P ON PRODUCTO_id_producto=id_producto;
 	END;
 $$
+LANGUAGE plpgsql;
 
 --HISTORIAL
 CREATE OR REPLACE FUNCTION cambiosPrecio()
 RETURNS TRIGGER
-LANGUAGE plpgsql
 AS 
 $$
 	DECLARE
@@ -71,6 +70,7 @@ $$
 		
 		RETURN NEW;
 END;$$
+LANGUAGE plpgsql;
 
 CREATE TRIGGER actualizacionPrecio
 AFTER UPDATE
@@ -82,7 +82,6 @@ EXECUTE PROCEDURE cambiosPrecio();
 --INVENTARIAR
 CREATE OR REPLACE FUNCTION verificarInventario()
 RETURNS TRIGGER
-LANGUAGE plpgsql
 AS
 $$
 	DECLARE
@@ -102,6 +101,7 @@ $$
 
 	END;
 $$
+LANGUAGE plpgsql;
 
 CREATE TRIGGER gestionarStock
 BEFORE INSERT 
