@@ -78,7 +78,7 @@ $$
 		stock INTEGER;
 		diferencia INTEGER;
 	BEGIN
-		stock:=(SELECT P.stock FROM PRODUCTO P WHERE NEW.PRODUCTO_id_producto=P.id_producto);
+		SELECT P.stock INTO stock FROM PRODUCTO P WHERE NEW.PRODUCTO_id_producto=P.id_producto;
 		
 		diferencia:=stock-NEW.cantidad;
 		
