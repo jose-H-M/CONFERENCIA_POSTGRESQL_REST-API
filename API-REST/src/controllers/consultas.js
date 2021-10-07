@@ -9,7 +9,7 @@ const getEmpleados = async (req,res) =>{
 }
 
 const getProductos = async (req,res) =>{
-    const response = await pool.query('SELECT * FROM PRODUCTO;');
+    const response = await pool.query('SELECT * FROM PRODUCTO ORDER BY id_producto;');
     console.log(response.rows);
     res.send(response.rows);
    
@@ -139,11 +139,11 @@ const postTransaccion = async (req,res) => {
 
 
 //PUT
-const putPrecio = async (req,res) => {
+const putStock = async (req,res) => {
     console.log(req.body)
     const id_producto = req.params.id;
-    const {precio} = req.body;
-    pool.query('UPDATE PRODUCTO SET precio=$1 WHERE id_producto=$2;',[precio,id_producto],(error,result) =>{
+    const {stock} = req.body;
+    pool.query('UPDATE PRODUCTO SET stock=$1 WHERE id_producto=$2;',[stock,id_producto],(error,result) =>{
         if(error==undefined)
         {
             if(result.rowCount == 0)
@@ -158,6 +158,7 @@ const putPrecio = async (req,res) => {
         }
         else
         {
+            console.log(error);
             res.send({msg: 'Error, no se pudo actualizar el producto'});
         }
     });
@@ -166,5 +167,5 @@ const putPrecio = async (req,res) => {
 module.exports =    {   getEmpleados, getHistorial, getProductos, getRegistros,
                         deleteEmpleado, deleteProducto,
                         postEmpleado, postProducto, postTransaccion,
-                        putPrecio
+                        putStock
                     }

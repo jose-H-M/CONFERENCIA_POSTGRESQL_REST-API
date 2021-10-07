@@ -5,7 +5,7 @@ const router = Router();
 const { getEmpleados, getHistorial, getProductos, getRegistros, 
         deleteEmpleado, deleteProducto,
         postEmpleado,postProducto, postTransaccion,
-        putPrecio
+        putStock
         } = require('../controllers/consultas');
 
 
@@ -21,7 +21,7 @@ router.post('/postEmpleado', postEmpleado);
 router.post('/postProducto', postProducto);
 router.post('/postTransaccion', postTransaccion);
 
-router.put('/putPrecio/:id', putPrecio);
+router.put('/putStock/:id', putStock);
 
 
 
